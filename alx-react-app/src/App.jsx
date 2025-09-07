@@ -1,9 +1,12 @@
-import { useState } from 'react'
+/*import { useState } from 'react'
 import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import viteLogo from '/vite.svg'*/
 import './App.css'
 import WelcomeMessage from './components/WelcomeMessage.jsx';
 
+import Header from './components/Header.jsx';
+import MainContent from './components/MainContent.jsx';
+import Footer from './components/Footer.jsx';
 /*function App() {
   const [count, setCount] = useState(0)
 
@@ -34,7 +37,7 @@ import WelcomeMessage from './components/WelcomeMessage.jsx';
 }    */
 
 
-function App() {
+/*function App() {
   return (
     <>
       <WelcomeMessage />
@@ -44,4 +47,16 @@ function App() {
 
 //export default App
 
-export default App
+export default App  */
+
+function App() {
+  return (
+    <div>
+      <Header />
+      <MainContent />
+      <Footer />
+    </div>
+  );
+}
+
+export default App;
