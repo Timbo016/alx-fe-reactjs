@@ -14,12 +14,21 @@ const FormikForm = () => {
     console.log("Registering user:", values);
 
     // Mock API call
-    const response = await fetch("https://jsonplaceholder.typicode.com/posts", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(values),
-    });
+    
+/////
 
+const response = await fetch("https://jsonplaceholder.typicode.com/posts", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify(values),
+});
+
+
+
+
+
+
+/////
     if (response.ok) {
       alert("User registered successfully (mock API)!");
       resetForm();
