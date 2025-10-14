@@ -36,7 +36,7 @@ export default App
 
 
 
-*/
+
 
 
 
@@ -49,6 +49,30 @@ function App() {
     <div>
       <FormikForm />
 
+    </div>
+  );
+}
+
+export default App;
+
+
+
+*/
+
+
+
+
+
+
+//import FormikForm from './components/formikForm';
+import FormikForm from './components/FormikForm';
+
+
+function App() {
+  return (
+    <div>
+      <h1>User Registration with Formik</h1>
+      <FormikForm />
     </div>
   );
 }

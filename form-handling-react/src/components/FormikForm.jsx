@@ -2,7 +2,6 @@ import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
-// Validation Schema
 const validationSchema = Yup.object({
   username: Yup.string().required("Username is required"),
   email: Yup.string().email("Invalid email").required("Email is required"),
@@ -10,38 +9,39 @@ const validationSchema = Yup.object({
 });
 
 const FormikForm = () => {
+  const initialValues = {
+    username: "",
+    email: "",
+    password: "",
+  };
+
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
-    console.log("Registering user:", values);
+    try {
+      const response = await fetch("https://jsonplaceholder.typicode.com/posts", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(values),
+      });
 
-    // Mock API call
-    
-/////
+      if (!response.ok) {
+        throw new Error("Network error");
+      }
 
-const response = await fetch("https://jsonplaceholder.typicode.com/posts", {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify(values),
-});
-
-
-
-
-
-
-/////
-    if (response.ok) {
-      alert("User registered successfully (mock API)!");
+      const data = await response.json();
+      console.log("User registered:", data);
+      alert("User registered successfully!");
       resetForm();
-    } else {
-      alert("Failed to register user.");
+    } catch (error) {
+      console.error("Submission error:", error);
+      alert("Failed to register user");
+    } finally {
+      setSubmitting(false);
     }
-
-    setSubmitting(false);
   };
 
   return (
     <Formik
-      initialValues={{ username: "", email: "", password: "" }}
+      initialValues={initialValues}
       validationSchema={validationSchema}
       onSubmit={handleSubmit}
     >
@@ -49,17 +49,20 @@ const response = await fetch("https://jsonplaceholder.typicode.com/posts", {
         <Form style={{ maxWidth: "300px", margin: "auto" }}>
           <h2>Register (Formik)</h2>
 
-          <Field type="text" name="username" placeholder="Username" />
-          <ErrorMessage name="username" component="div" style={{ color: "red" }} />
-          <br /><br />
+          <div>
+            <Field type="text" name="username" placeholder="Username" />
+            <ErrorMessage name="username" component="p" style={{ color: "red" }} />
+          </div>
 
-          <Field type="email" name="email" placeholder="Email" />
-          <ErrorMessage name="email" component="div" style={{ color: "red" }} />
-          <br /><br />
+          <div>
+            <Field type="email" name="email" placeholder="Email" />
+            <ErrorMessage name="email" component="p" style={{ color: "red" }} />
+          </div>
 
-          <Field type="password" name="password" placeholder="Password" />
-          <ErrorMessage name="password" component="div" style={{ color: "red" }} />
-          <br /><br />
+          <div>
+            <Field type="password" name="password" placeholder="Password" />
+            <ErrorMessage name="password" component="p" style={{ color: "red" }} />
+          </div>
 
           <button type="submit" disabled={isSubmitting}>
             {isSubmitting ? "Submitting..." : "Register"}
