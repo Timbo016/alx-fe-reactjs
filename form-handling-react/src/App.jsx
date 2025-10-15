@@ -1,33 +1,24 @@
-import React from "react";
-/*import RegistrationForm from "./components/RegistrationForm";
-// import FormikForm from "./components/FormikForm"; // uncomment to test Formik
+/*import RegistrationForm from './components/RegistrationForm';
 
 function App() {
   return (
-    <div>
+    <div className="App">
       <RegistrationForm />
-      {/* <FormikForm /> }
     </div>
   );
 }
 
-export default App;
-
-
+export default App; 
 
 */
 
-
 //import RegistrationForm from './components/RegistrationForm';
-import FormikForm from './components/FormikForm';
+import FormikForm from './components/formikForm';
 
 function App() {
   return (
-    /*<div>
-      <h1>Controlled Form</h1>
-      < RegistrationForm /> */
-      <div>
-      <h1>Formik Form</h1>
+    <div className="App">
+      
       <FormikForm />
     </div>
   );
