@@ -1,4 +1,6 @@
-/*import RegistrationForm from './components/RegistrationForm';
+/*import React from 'react';
+import RegistrationForm from './components/RegistrationForm';
+import './App.css'; // We'll add some styles here later
 
 function App() {
   return (
@@ -8,17 +10,26 @@ function App() {
   );
 }
 
-export default App; 
+export default App;
+
+
+
 
 */
 
-//import RegistrationForm from './components/RegistrationForm';
-import FormikForm from './components/formikForm';
+
+
+
+import React from 'react';
+import RegistrationForm from './components/RegistrationForm';
+import FormikForm from './components/formikForm'; // Import FormikForm
+import './App.css'; 
 
 function App() {
   return (
     <div className="App">
-      
+      <RegistrationForm />
+      <hr /> {/* Add a line to separate them */}
       <FormikForm />
     </div>
   );
